@@ -95,3 +95,22 @@ function obtenerEdadPromedio() {
 	const promedio = total / arrayEdades.length;
 	return promedio;
 }
+
+function mostrarResultados() {
+	document.querySelector(
+		"#mayor-edad"
+	).textContent = `La mayor edad es: ${obtenerMayorEdad()}`;
+	document.querySelector(
+		"#menor-edad"
+	).textContent = `La menor edad es: ${obtenerMenorEdad()}`;
+	document.querySelector(
+		"#promedio-edad"
+	).textContent = `La edad promedio es: ${obtenerEdadPromedio()}`;
+}
+
+const $botonCalcular = document.querySelector("#calcular");
+
+$botonCalcular.onclick = function (event) {
+	event.preventDefault();
+	mostrarResultados();
+};
