@@ -37,3 +37,55 @@ $botonCrearIntegrantes.onclick = function (event) {
 	event.preventDefault();
 	crearIntegrante();
 };
+
+function obtenerMayorEdad() {
+	const $edadesIntegrantes = document.querySelectorAll(
+		"[id^=edad-integrante-]"
+	);
+
+	const arrayEdades = Array.from($edadesIntegrantes)
+		.map(($edad) => Number($edad.value))
+		.filter((edad) => edad !== 0);
+
+	if (arrayEdades.length === 0) {
+		return alert("No hay edades validas.");
+	}
+
+	const mayorEdad = Math.max(...arrayEdades);
+	return mayorEdad;
+}
+
+function obtenerMenorEdad() {
+	const $edadesIntegrantes = document.querySelectorAll(
+		"[id^=edad-integrante-]"
+	);
+
+	const arrayEdades = Array.from($edadesIntegrantes)
+		.map(($edad) => Number($edad.value))
+		.filter((edad) => edad !== 0);
+
+	if (arrayEdades.length === 0) {
+		return alert("No hay edades validas.");
+	}
+
+	const menorEdad = Math.min(...arrayEdades);
+	return menorEdad;
+}
+
+function obtenerEdadPromedio() {
+	const $edadesIntegrantes = document.querySelectorAll(
+		"[id^=edad-integrante-]"
+	);
+
+	const arrayEdades = Array.from($edadesIntegrantes).map(($edad) =>
+		Number($edad.value)
+	);
+
+	let total = 0;
+	for (let i = 0; i < arrayEdades.length; i++) {
+		total += arrayEdades[i];
+	}
+
+	const promedio = total / arrayEdades.length;
+	return promedio;
+}
