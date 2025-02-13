@@ -1,12 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Clase 6: Tarea 2</title>
-</head>
-<body>
-    <script src="tarea-2.js"></script>
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css" />
+		<title>Clase 6: Tarea 2</title>
+	</head>
+	<body>
+		<h1 id="titulo">Calculadora de salarios</h1>
+		<form action="submit">
+			<label for="numero-integrantes"
+				>Ingresá el número de integrantes de la familia que trabajan</label
+			>
+			<input type="number" id="numero-integrantes" />
+			<button type="button" id="crear">CREAR</button>
+			<div id="contenedor-salarios">
+				<button type="button" id="calcular">CALCULAR</button>
+			</div>
+			<div id="contenedor-resultados">
+				<em id="mayor-salario"></em>
+				<br />
+				<em id="menor-salario"></em>
+				<br />
+				<em id="salario-anual-promedio"></em>
+				<br />
+				<em id="salario-mensual-promedio"></em>
+                <br>
+				<button type="button" id="reset">RESETEAR</button>
+			</div>
+		</form>
+		<script src="tarea-2.js"></script>
+	</body>
 </html>
