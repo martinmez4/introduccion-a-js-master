@@ -113,4 +113,31 @@ const $botonCalcular = document.querySelector("#calcular");
 $botonCalcular.onclick = function (event) {
 	event.preventDefault();
 	mostrarResultados();
+
+	const $botonReset = document.querySelector("#reset");
+	$botonReset.style.display = "block";
+};
+
+function resetear() {
+	const $contenedorIntegrantes = document.querySelector(
+		"#contenedor-integrantes"
+	);
+	const $contenedorResultados = document.querySelector(
+		"#contenedor-resultados"
+	);
+	const $botonCalcular = document.querySelector("#calcular");
+	const $botonReset = document.querySelector("#reset");
+
+	document.querySelector("#numero-de-integrantes").value = "";
+	$contenedorIntegrantes.innerHTML = "";
+	$contenedorResultados.innerHTML = "";
+	$botonCalcular.style.display = "none";
+	$botonReset.style.display = "none";
+}
+
+const $botonReset = document.querySelector("#reset");
+
+$botonReset.onclick = function (event) {
+	event.preventDefault();
+	resetear();
 };
