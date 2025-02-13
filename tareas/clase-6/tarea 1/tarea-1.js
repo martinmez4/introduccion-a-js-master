@@ -19,21 +19,24 @@ function crearIntegrante() {
 	if ($cantidadIntegrantes >= 2) {
 		$botonCalcular.style.display = "block";
 	}
+	if ($cantidadIntegrantes >= 2) {
+		for (let i = 1; i <= $cantidadIntegrantes; i++) {
+			const $label = document.createElement("label");
+			$label.setAttribute("for", `edad-integrante-${i}`);
+			$label.textContent = `Edad integrante ${i}`;
 
-	for (let i = 1; i <= $cantidadIntegrantes; i++) {
-		const $label = document.createElement("label");
-		$label.setAttribute("for", `edad-integrante-${i}`);
-		$label.textContent = `Edad integrante ${i}`;
+			const $input = document.createElement("input");
+			$input.id = `edad-integrante-${i}`;
+			$input.type = "number";
 
-		const $input = document.createElement("input");
-		$input.id = `edad-integrante-${i}`;
-		$input.type = "number";
+			const $br = document.createElement("br");
 
-		const $br = document.createElement("br");
-
-		$contenedorIntegrantes.appendChild($label);
-		$contenedorIntegrantes.appendChild($input);
-		$contenedorIntegrantes.appendChild($br);
+			$contenedorIntegrantes.appendChild($label);
+			$contenedorIntegrantes.appendChild($input);
+			$contenedorIntegrantes.appendChild($br);
+		}
+	} else {
+		return alert("El numero de integrantes debe ser de al menos 2.");
 	}
 }
 
