@@ -13,6 +13,12 @@ function crearIntegrante() {
 		"#contenedor-integrantes"
 	);
 	$contenedorIntegrantes.innerHTML = "";
+	const $botonCalcular = document.querySelector("#calcular");
+	$botonCalcular.style.display = "none";
+
+	if ($cantidadIntegrantes >= 2) {
+		$botonCalcular.style.display = "block";
+	}
 
 	for (let i = 1; i <= $cantidadIntegrantes; i++) {
 		const $label = document.createElement("label");
