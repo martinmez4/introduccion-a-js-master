@@ -53,7 +53,7 @@ $botonCrearIntegrantes.onclick = function (event) {
 
 function obtenerMayorSalario() {
 	const $salariosIntegrantes = document.querySelectorAll(
-		"[id^=salario-integrante-]"
+		"[id^=salario-anual-integrante-]"
 	);
 
 	const arraySalarios = Array.from($salariosIntegrantes)
@@ -70,7 +70,7 @@ function obtenerMayorSalario() {
 
 function obtenerMenorSalario() {
 	const $salariosIntegrantes = document.querySelectorAll(
-		"[id^=salario-integrante-]"
+		"[id^=salario-anual-integrante-]"
 	);
 
 	const arraySalarios = Array.from($salariosIntegrantes)
@@ -87,7 +87,7 @@ function obtenerMenorSalario() {
 
 function obtenerSalarioAnualPromedio() {
 	const $salariosIntegrantes = document.querySelectorAll(
-		"[id^=salario-integrante-]"
+		"[id^=salario-anual-integrante-]"
 	);
 
 	const arraySalarios = Array.from($salariosIntegrantes)
@@ -109,7 +109,7 @@ function obtenerSalarioAnualPromedio() {
 
 function obtenerSalarioMensualPromedio() {
 	const $salariosIntegrantes = document.querySelectorAll(
-		"[id^=salario-integrante-]"
+		"[id^=salario-anual-integrante-]"
 	);
 
 	const arraySalarios = Array.from($salariosIntegrantes)
@@ -130,8 +130,44 @@ function obtenerSalarioMensualPromedio() {
 	return salarioMensualPromedio;
 }
 
+function mostrarResultados() {
+	document.querySelector(
+		"#mayor-salario"
+	).textContent = `El mayor salario es: ${obtenerMayorSalario()}`;
+	document.querySelector(
+		"#menor-salario"
+	).textContent = `El menor salario es: ${obtenerMenorSalario()}`;
+	document.querySelector(
+		"#salario-anual-promedio"
+	).textContent = `El salario anual promedio es: ${obtenerSalarioAnualPromedio()}`;
+	document.querySelector(
+		"#salario-mensual-promedio"
+	).textContent = `El salario mensual promedio es: ${obtenerSalarioMensualPromedio()}`;
+
+	const $botonReset = document.querySelector("#reset");
+
+	$botonReset.style.display = "block";
+}
+
 const $botonCalcular = document.querySelector("#calcular");
 
 $botonCalcular.onclick = function (event) {
 	event.preventDefault();
+	mostrarResultados();
+};
+
+function resetear() {
+	document.querySelector("#contenedor-resultados").textContent = "";
+	document.querySelector("#contenedor-salarios").textContent = "";
+
+	const $botonCalcular = document.querySelector("#calcular");
+	$botonCalcular.style.display = "none";
+
+	document.querySelector("#numero-integrantes").value = "";
+}
+const $botonReset = document.querySelector("#reset");
+
+$botonReset.onclick = function (event) {
+	event.preventDefault();
+	resetear();
 };
