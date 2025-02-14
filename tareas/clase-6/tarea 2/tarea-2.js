@@ -25,11 +25,11 @@ function crearIntegrante() {
 	if ($numeroIntegrantes >= 2) {
 		for (let i = 1; i <= $numeroIntegrantes; i++) {
 			const $label = document.createElement("label");
-			$label.setAttribute("for", `salario-integrante-${i}`);
-			$label.textContent = `Salario integrante ${i}`;
+			$label.setAttribute("for", `salario-anual-integrante-${i}`);
+			$label.textContent = `Salario anual integrante ${i}`;
 
 			const $input = document.createElement("input");
-			$input.id = `salario-integrante-${i}`;
+			$input.id = `salario-anual-integrante-${i}`;
 			$input.type = "number";
 
 			const $br = document.createElement("br");
@@ -49,4 +49,89 @@ const $botonCrearIntegrantes = document.querySelector("#crear");
 $botonCrearIntegrantes.onclick = function (event) {
 	event.preventDefault();
 	crearIntegrante();
+};
+
+function obtenerMayorSalario() {
+	const $salariosIntegrantes = document.querySelectorAll(
+		"[id^=salario-integrante-]"
+	);
+
+	const arraySalarios = Array.from($salariosIntegrantes)
+		.map(($salario) => Number($salario.value))
+		.filter((salario) => salario !== 0);
+
+	if (arraySalarios.length === 0) {
+		return alert("No hay salarios validos.");
+	}
+
+	const mayorSalario = Math.max(...arraySalarios);
+	return mayorSalario;
+}
+
+function obtenerMenorSalario() {
+	const $salariosIntegrantes = document.querySelectorAll(
+		"[id^=salario-integrante-]"
+	);
+
+	const arraySalarios = Array.from($salariosIntegrantes)
+		.map(($salario) => Number($salario.value))
+		.filter((salario) => salario !== 0);
+
+	if (arraySalarios.length === 0) {
+		return alert("No hay salarios validos.");
+	}
+
+	const menorSalario = Math.min(...arraySalarios);
+	return menorSalario;
+}
+
+function obtenerSalarioAnualPromedio() {
+	const $salariosIntegrantes = document.querySelectorAll(
+		"[id^=salario-integrante-]"
+	);
+
+	const arraySalarios = Array.from($salariosIntegrantes)
+		.map(($salario) => Number($salario.value))
+		.filter((salario) => salario !== 0);
+
+	if (arraySalarios.length === 0) {
+		return alert("No hay salarios validos.");
+	}
+
+	let total = 0;
+	for (let i = 0; i < arraySalarios.length; i++) {
+		total += arraySalarios[i];
+	}
+
+	const salarioAnualPromedio = total / arraySalarios.length;
+	return salarioAnualPromedio;
+}
+
+function obtenerSalarioMensualPromedio() {
+	const $salariosIntegrantes = document.querySelectorAll(
+		"[id^=salario-integrante-]"
+	);
+
+	const arraySalarios = Array.from($salariosIntegrantes)
+		.map(($salario) => Number($salario.value))
+		.filter((salario) => salario !== 0);
+
+	if (arraySalarios.length === 0) {
+		return alert("No hay salarios validos.");
+	}
+
+	let total = 0;
+	for (let i = 0; i < arraySalarios.length; i++) {
+		total += arraySalarios[i];
+	}
+
+	const salarioAnualPromedio = total / arraySalarios.length;
+	const salarioMensualPromedio = salarioAnualPromedio / 12;
+	return salarioMensualPromedio;
+}
+
+const $botonCalcular = document.querySelector("#calcular");
+
+$botonCalcular.onclick = function (event) {
+	event.preventDefault();
 };
